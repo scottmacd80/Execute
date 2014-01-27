@@ -19,6 +19,7 @@
 		D20E1D6A18950DD000762998 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D20E1D5218950DD000762998 /* UIKit.framework */; };
 		D20E1D7218950DD000762998 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D20E1D7018950DD000762998 /* InfoPlist.strings */; };
 		D20E1D7418950DD000762998 /* ExecuteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D20E1D7318950DD000762998 /* ExecuteTests.m */; };
+		D20E1D7F18950F2700762998 /* EXEPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D20E1D7E18950F2700762998 /* EXEPlayViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,8 @@
 		D20E1D6F18950DD000762998 /* ExecuteTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ExecuteTests-Info.plist"; sourceTree = "<group>"; };
 		D20E1D7118950DD000762998 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D20E1D7318950DD000762998 /* ExecuteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExecuteTests.m; sourceTree = "<group>"; };
+		D20E1D7D18950F2700762998 /* EXEPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXEPlayViewController.h; sourceTree = "<group>"; };
+		D20E1D7E18950F2700762998 /* EXEPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXEPlayViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +114,8 @@
 				D20E1D5E18950DD000762998 /* EXEAppDelegate.m */,
 				D20E1D6018950DD000762998 /* Images.xcassets */,
 				D20E1D5518950DD000762998 /* Supporting Files */,
+				D20E1D7D18950F2700762998 /* EXEPlayViewController.h */,
+				D20E1D7E18950F2700762998 /* EXEPlayViewController.m */,
 			);
 			path = Execute;
 			sourceTree = "<group>";
@@ -240,6 +245,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D20E1D7F18950F2700762998 /* EXEPlayViewController.m in Sources */,
 				D20E1D5B18950DD000762998 /* main.m in Sources */,
 				D20E1D5F18950DD000762998 /* EXEAppDelegate.m in Sources */,
 			);
