@@ -7,7 +7,7 @@
 //
 
 #import "EXEAppDelegate.h"
-#import "EXEPlayViewController.h"
+#import "EXEListViewController.h"
 
 @implementation EXEAppDelegate
 
@@ -17,7 +17,9 @@
     // Override point for customization after application launch.
     
     self.window.backgroundColor = [UIColor whiteColor];
-    self.window.rootViewController = [[EXEPlayViewController alloc] init];
+    UIViewController *viewController = [[EXEListViewController alloc] init];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    self.window.rootViewController = navigationController;
     
     [self.window makeKeyAndVisible];
     
