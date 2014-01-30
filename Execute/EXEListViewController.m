@@ -68,6 +68,14 @@
     [userDefaults synchronize];
 }
 
+- (NSMutableArray *)arrayforSection:(NSInteger)section {
+    if (section == 0) {
+        return self.tasks;
+    }
+    
+    return self.completedTasks;
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -75,24 +83,43 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (section == 1) {
-        return [self.completedTasks count];
-    }
-    return [self.tasks count];
+    return [[self arrayforSection:section] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
+    cell.textLabel.text = [self arrayforSection:indexPath.section][indexPath.row];
+    
     if (indexPath.section == 0) {
-        cell.textLabel.text = self.tasks[indexPath.row];
         cell.textLabel.textColor = [UIColor blackColor];
     } else {
-        cell.textLabel.text = self.completedTasks[indexPath.row];
         cell.textLabel.textColor = [UIColor lightGrayColor];
     }
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    [[self arrayforSection:indexPath.section] removeObjectAtIndex:indexPath.row];
+    [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+    
+    [self save];
+}
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath{
+    return indexPath.section == 0;
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+    NSMutableArray *array = [self arrayforSection:fromIndexPath.section];
+    NSString *task = array[fromIndexPath.row];
+    [array removeObjectAtIndex:fromIndexPath.row];
+    [array insertObject:task atIndex:toIndexPath.row];
+    
+    [tableView moveRowAtIndexPath:fromIndexPath toIndexPath:toIndexPath];
+
+    [self save];
 }
 
 #pragma mark - UITableViewDelegate
@@ -135,9 +162,7 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [self.tasks insertObject:textField.text atIndex:0];
-    [self.tableView beginUpdates];
     [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
-    [self.tableView endUpdates];
     
     textField.text = nil;
     
