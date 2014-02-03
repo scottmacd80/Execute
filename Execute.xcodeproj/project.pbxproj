@@ -21,6 +21,9 @@
 		D20E1D7218950DD000762998 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D20E1D7018950DD000762998 /* InfoPlist.strings */; };
 		D20E1D7418950DD000762998 /* ExecuteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D20E1D7318950DD000762998 /* ExecuteTests.m */; };
 		D20E1D7F18950F2700762998 /* EXEPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D20E1D7E18950F2700762998 /* EXEPlayViewController.m */; };
+		D2CB6C87189FED760058A0FD /* EXETaskTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CB6C86189FED760058A0FD /* EXETaskTableViewCell.m */; };
+		D2CB6C8A189FFAF90058A0FD /* EXEEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CB6C89189FFAF90058A0FD /* EXEEditViewController.m */; };
+		D2CB6C8D18A057CD0058A0FD /* EXETaskTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CB6C8C18A057CD0058A0FD /* EXETaskTextField.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +57,12 @@
 		D20E1D7318950DD000762998 /* ExecuteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExecuteTests.m; sourceTree = "<group>"; };
 		D20E1D7D18950F2700762998 /* EXEPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXEPlayViewController.h; sourceTree = "<group>"; };
 		D20E1D7E18950F2700762998 /* EXEPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXEPlayViewController.m; sourceTree = "<group>"; };
+		D2CB6C85189FED760058A0FD /* EXETaskTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXETaskTableViewCell.h; sourceTree = "<group>"; };
+		D2CB6C86189FED760058A0FD /* EXETaskTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXETaskTableViewCell.m; sourceTree = "<group>"; };
+		D2CB6C88189FFAF90058A0FD /* EXEEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXEEditViewController.h; sourceTree = "<group>"; };
+		D2CB6C89189FFAF90058A0FD /* EXEEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXEEditViewController.m; sourceTree = "<group>"; };
+		D2CB6C8B18A057CD0058A0FD /* EXETaskTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXETaskTextField.h; sourceTree = "<group>"; };
+		D2CB6C8C18A057CD0058A0FD /* EXETaskTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXETaskTextField.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,12 +124,18 @@
 			children = (
 				D20E1D5D18950DD000762998 /* EXEAppDelegate.h */,
 				D20E1D5E18950DD000762998 /* EXEAppDelegate.m */,
-				D20E1D6018950DD000762998 /* Images.xcassets */,
-				D20E1D5518950DD000762998 /* Supporting Files */,
 				D20E1D7D18950F2700762998 /* EXEPlayViewController.h */,
 				D20E1D7E18950F2700762998 /* EXEPlayViewController.m */,
 				CAF103581897F65C00F9758A /* EXEListViewController.h */,
 				CAF103591897F65C00F9758A /* EXEListViewController.m */,
+				D2CB6C88189FFAF90058A0FD /* EXEEditViewController.h */,
+				D2CB6C89189FFAF90058A0FD /* EXEEditViewController.m */,
+				D2CB6C8B18A057CD0058A0FD /* EXETaskTextField.h */,
+				D2CB6C8C18A057CD0058A0FD /* EXETaskTextField.m */,
+				D2CB6C85189FED760058A0FD /* EXETaskTableViewCell.h */,
+				D2CB6C86189FED760058A0FD /* EXETaskTableViewCell.m */,
+				D20E1D6018950DD000762998 /* Images.xcassets */,
+				D20E1D5518950DD000762998 /* Supporting Files */,
 			);
 			path = Execute;
 			sourceTree = "<group>";
@@ -250,10 +265,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2CB6C8D18A057CD0058A0FD /* EXETaskTextField.m in Sources */,
 				D20E1D7F18950F2700762998 /* EXEPlayViewController.m in Sources */,
 				D20E1D5B18950DD000762998 /* main.m in Sources */,
+				D2CB6C87189FED760058A0FD /* EXETaskTableViewCell.m in Sources */,
 				D20E1D5F18950DD000762998 /* EXEAppDelegate.m in Sources */,
 				CAF1035A1897F65C00F9758A /* EXEListViewController.m in Sources */,
+				D2CB6C8A189FFAF90058A0FD /* EXEEditViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

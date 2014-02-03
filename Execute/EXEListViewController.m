@@ -7,6 +7,9 @@
 //
 
 #import "EXEListViewController.h"
+#import "EXETaskTableViewCell.h"
+#import "EXEEditViewController.h"
+#import "EXETaskTextField.h"
 
 @interface EXEListViewController () <UITextFieldDelegate>
 
@@ -24,9 +27,9 @@
     [super viewDidLoad];
     
     self.title = @"Execute";
-    [self.tableView registerClass:[UITableViewCell class]  forCellReuseIdentifier:@"cell"];
+    [self.tableView registerClass:[EXETaskTableViewCell class]  forCellReuseIdentifier:@"cell"];
     
-    UITextField *textfield = [[UITextField alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 260.0f, 32.0f)];
+    EXETaskTextField *textfield = [[EXETaskTextField alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 260.0f, 32.0f)];
     textfield.returnKeyType = UIReturnKeyGo;
     textfield.backgroundColor = [UIColor colorWithWhite:0.90f alpha:1.0f];
     textfield.placeholder = @"what do you want to do?";
@@ -59,6 +62,14 @@
     [self setEditing:!self.editing animated:YES];
 }
 
+- (void)editTask:(UITapGestureRecognizer *)sender {
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell *)sender.view];
+    NSLog(@"task: %@", [self arrayforSection:indexPath.section][indexPath.row]);
+    
+    EXEEditViewController *viewController = [[EXEEditViewController alloc] init];
+    [self.navigationController pushViewController:viewController animated:YES];
+}
+
 #pragma mark - Private
 
 - (void)save {
@@ -87,15 +98,12 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    EXETaskTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    cell.textLabel.text = [self arrayforSection:indexPath.section][indexPath.row];
+    [cell.editGestureRecognizer addTarget:self action:@selector(editTask:)];
     
-    if (indexPath.section == 0) {
-        cell.textLabel.textColor = [UIColor blackColor];
-    } else {
-        cell.textLabel.textColor = [UIColor lightGrayColor];
-    }
+    cell.task = [self arrayforSection:indexPath.section][indexPath.row];
+    cell.completed = indexPath.section == 1;
     
     return cell;
 }
@@ -161,7 +169,14 @@
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    [self.tasks insertObject:textField.text atIndex:0];
+    NSString *text = [textField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    if (text.length == 0) {
+        [textField resignFirstResponder];
+        textField.text = nil;
+        return NO;
+    }
+    
+    [self.tasks insertObject:text atIndex:0];
     [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
     
     textField.text = nil;
