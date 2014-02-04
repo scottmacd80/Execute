@@ -30,9 +30,7 @@
     [self.tableView registerClass:[EXETaskTableViewCell class]  forCellReuseIdentifier:@"cell"];
     
     EXETaskTextField *textfield = [[EXETaskTextField alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 260.0f, 32.0f)];
-    textfield.returnKeyType = UIReturnKeyGo;
-    textfield.backgroundColor = [UIColor colorWithWhite:0.90f alpha:1.0f];
-    textfield.placeholder = @"what do you want to do?";
+
     textfield.delegate = self;
     self.navigationItem.titleView = textfield;
     

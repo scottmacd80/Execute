@@ -14,8 +14,10 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor colorWithWhite:0.9f alpha:1.0f];
+        self.backgroundColor = [UIColor colorWithWhite:0.93f alpha:1.0f];
         self.layer.cornerRadius = 5.0f;
+        self.returnKeyType = UIReturnKeyGo;
+        self.placeholder = @"what do you want to do?";
     }
     return self;
 }
